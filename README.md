@@ -9,6 +9,8 @@ How to use:
 5. Select your source and target templates
 6. Check the boxes for copying SSIDs and/or switch ports
 
+![image alt text](image_crossorg_app.png)
+
 Current capabilities:
 1. Clone SSIDs
 2. Clone SSID Firewalls
