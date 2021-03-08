@@ -8,3 +8,20 @@ How to use:
 4. Run the script with python main.py
 5. Select your source and target templates
 6. Check the boxes for copying SSIDs and/or switch ports
+
+Current capabilities:
+1. Clone SSIDs
+2. Clone SSID Firewalls
+3. Clone SSID Traffic Shaping
+4. Clone Switch Profile Ports
+5. Clone Switch QoS
+6. Clone Switch STP
+7. Clone Network Group Policies
+8. Clone Network Alerts
+9. Clone Network Traffic Analytics
+10. Clone Network Syslog
+11. Clone Network SNMP
+
+Caveats:
+1. For copying switch settings, both the source and target templates must have switch profiles created for the same switch models
+2. The profiles themselves can be empty of configurations, but they have to exist before running the script
