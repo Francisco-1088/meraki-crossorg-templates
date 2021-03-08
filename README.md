@@ -1,4 +1,7 @@
 # meraki-crossorg-templates
+
+![image alt text](./diagram.png)
+
 This is a simple application that can clone switch and SSID settings from one template in one source organization to another template in a target organization. The use case is for customers who have very large (over 25000 switches and APs) but very simple deployments, like elementary schools.
 
 How to use:
