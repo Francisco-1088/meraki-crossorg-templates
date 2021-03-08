@@ -27,3 +27,4 @@ Current capabilities:
 Caveats:
 1. For copying switch settings, both the source and target templates must have switch profiles created for the same switch models
 2. The profiles themselves can be empty of configurations, but they have to exist before running the script
+3. It is highly recommended that you test this in a test template before running in a production template
