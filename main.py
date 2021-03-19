@@ -142,16 +142,16 @@ if __name__ == "__main__":
                     dst_switch_profiles = dashboard.switch.getOrganizationConfigTemplateSwitchProfiles(
                         organizationId=dst_org_id, configTemplateId=dst_temp_id)
 
-                    src_switch_set = [item['model'] for item in src_switch_profiles]
-                    dst_switch_set = [item['model'] for item in dst_switch_profiles]
+                    src_switch_set = [item['name'] for item in src_switch_profiles]
+                    dst_switch_set = [item['name'] for item in dst_switch_profiles]
 
-                    if src_switch_set == dst_switch_set:
+                    if set(src_switch_set) == set(dst_switch_set):
                         for profile in src_switch_profiles:
                             switch_profiles_ports = dashboard.switch.getOrganizationConfigTemplateSwitchProfilePorts(
                                 organizationId=src_org_id, configTemplateId=src_temp_id,
                                 profileId=profile['switchProfileId'])
                             for dst_profile in dst_switch_profiles:
-                                if dst_profile['model']==profile['model']:
+                                if dst_profile['name']==profile['name']:
                                     actions = []
                                     for port in switch_profiles_ports:
                                         d = port
