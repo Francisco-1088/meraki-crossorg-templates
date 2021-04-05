@@ -7,16 +7,27 @@ def gather_templates(api_client):
 
     orgs = api_client.organizations.getOrganizations()
     temps = []
-
+    non_api = []
+    j = 0
     for org in orgs:
-        temp = dashboard.organizations.getOrganizationConfigTemplates(organizationId=org['id'])
-        temps.append(temp)
+        try:
+            temp = dashboard.organizations.getOrganizationConfigTemplates(organizationId=org['id'])
+            temps.append(temp)
+            j = j + 1
+        except meraki.APIError as e:
+            print(e)
+            temps.append(j)
+            non_api.append(j)
+            j = j + 1
     org_templates = []
 
     for i in range(len(orgs)):
-        dict = orgs[i]
-        dict['templates'] = temps[i]
-        org_templates.append(dict)
+        if i in non_api:
+            continue
+        else:
+            dict = orgs[i]
+            dict['templates'] = temps[i]
+            org_templates.append(dict)
 
     return org_templates
 
@@ -125,7 +136,8 @@ if __name__ == "__main__":
                             }
                         }
                         actions.append(a)
-                    batch = dashboard.organizations.createOrganizationActionBatch(organizationId=dst_org_id, actions=actions, confirmed=True)
+                    batch = dashboard.organizations.createOrganizationActionBatch(organizationId=dst_org_id,
+                                                                                  actions=actions, confirmed=True)
                 except meraki.APIError as e:
                     open_window(e)
         if clone_switch_profiles:
