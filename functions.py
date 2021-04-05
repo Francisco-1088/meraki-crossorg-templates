@@ -11,6 +11,8 @@ def ssid_firewall(dashboard, src_temp_id, dst_temp_id, dst_org_id):
         for i in range(len(l3_fw['rules'])):
             if l3_fw['rules'][i]['comment'] == 'Wireless clients accessing LAN':
                 indices.append(i)
+                if l3_fw['rules'][i]['policy']=='deny':
+                    l3_fw['allowLanAccess'] = False
             elif l3_fw['rules'][i]['comment'] == 'Default rule':
                 indices.append(i)
         for item in sorted(indices, reverse=True):
