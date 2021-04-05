@@ -13,6 +13,8 @@ def ssid_firewall(dashboard, src_temp_id, dst_temp_id, dst_org_id):
                 indices.append(i)
                 if l3_fw['rules'][i]['policy']=='deny':
                     l3_fw['allowLanAccess'] = False
+                else:
+                    l3_fw['allowLanAccess'] = True
             elif l3_fw['rules'][i]['comment'] == 'Default rule':
                 indices.append(i)
         for item in sorted(indices, reverse=True):
